@@ -73,12 +73,37 @@ class Array
   end
 end
 
-robot_parts = [
-  ["nuts", "bolts", "washers"],
-  ["capacitors", "resistors", "inductors"],
-]
+# robot_parts = [
+#   ["nuts", "bolts", "washers"],
+#   ["capacitors", "resistors", "inductors"],
+# ]
 
-robot_parts_copy = robot_parts.deep_dup
+# robot_parts_copy = robot_parts.deep_dup
 
-puts robot_parts.object_id
-puts robot_parts_copy.object_id
+# puts robot_parts.object_id
+# puts robot_parts_copy.object_id
+def fib_iterative(n)
+    array = [0,1]
+    return array.take(n) if n <= 2
+    (0...n-2).each do |i|
+        array << array[i] + array[i+1]
+    end
+    array
+end
+# p fib_iterative(0)
+# p fib_iterative(1)
+# p fib_iterative(2)
+# p fib_iterative(4)
+# p fib_iterative(6)
+# p fib_iterative(10)
+
+
+def fib(n)
+    return [0, 1].take(n) if n <= 2
+        prev = fib(n-1)
+        prev << prev[-1] + prev[-2]
+ end
+
+#  p fib(3)
+# p fib(4)
+# p fib(6)
