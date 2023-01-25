@@ -136,8 +136,8 @@ end
 def merge_sort(array)
   return array if array.length <= 1
   mid_idx = array.length / 2
-  beginning = merge_sort(array[0..mid_idx])
-  ending = merge_sort(array[(mid_idx + 1)..-1])
+  beginning = merge_sort(array[0...mid_idx])
+  ending = merge_sort(array[mid_idx..-1])
   merge(beginning, ending)
 end
 
@@ -155,5 +155,24 @@ def merge(array_1, array_2)
   merged + array_1 + array_2
 end
 
-p merge_sort([7, 14, 3, 90])
+# p merge_sort([7, 14, 3, 90])
 # p merge([2, 4, 6, 8], [1, 3, 5, 7])
+
+
+def subsets(array)
+    return [[]] if array.empty?
+    i = 0
+    target = array.length
+    while i != target
+        ending = array.pop
+        merge = []
+        merge << ending
+        i += 1
+    end
+    subsets(array) << [ending] << merge#need to return [[][1]]
+
+end
+
+p subsets([1, 2])
+
+#subsets[1] = subsets[] subsets [1,2,3] is equal to subsets [1,2] plus each of those subsets with 3 added
