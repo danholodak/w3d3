@@ -22,3 +22,18 @@ p range(1, 5) #=> [1,2,3,4]
 p recur_range(1, 2) #=> [1]
 p recur_range(1, 3) #=> [1, 2]
 p recur_range(1, 5) #=> [1,2,3,4]
+
+def exp(b, n)
+end
+
+# this is math, not Ruby methods.
+
+# recursion 1
+p exp(b, 0) #= 1
+p exp(b, n) #= b * exp(b, n - 1)
+
+# recursion 2
+p exp(b, 0) #= 1
+p exp(b, 1) #= b
+p exp(b, n) #= exp(b, n / 2) ** 2             [for even n]
+p exp(b, n) #= b * (exp(b, (n - 1) / 2) ** 2) [for odd n]
