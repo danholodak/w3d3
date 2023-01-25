@@ -161,18 +161,23 @@ end
 
 def subsets(array)
     return [[]] if array.empty?
-    i = 0
-    target = array.length
-    while i != target
-        ending = array.pop
-        merge = []
-        merge << ending
-        i += 1
+    # i = 0
+    # target = array.length
+    # while i != target
+    ending = array[-1]
+    # merge = []
+    # merge << ending
+    #     i += 1
+    # end
+    prev = subsets(array[0..-2])
+    prev_copy = prev.deep_dup #  << [ending] << merge#need to return [[][1]]
+    prev_copy.each do |subarray|
+        subarray << ending
     end
-    subsets(array) << [ending] << merge#need to return [[][1]]
-
+    prev + prev_copy
 end
 
 p subsets([1, 2])
+p subsets([1, 2, 3, 4])
 
 #subsets[1] = subsets[] subsets [1,2,3] is equal to subsets [1,2] plus each of those subsets with 3 added
