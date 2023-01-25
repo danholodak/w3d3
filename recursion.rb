@@ -1,3 +1,5 @@
+require "byebug"
+
 def range(min, max)
   arr = []
   (min...max).each do |i|
@@ -109,7 +111,7 @@ end
 # p fib(6)
 
 def bsearch(arr, target)
-    return nil if arr.length==0
+  return nil if arr.length == 0
   mid_idx = arr.length / 2
   mid = arr[mid_idx]
   return mid_idx if mid == target
@@ -132,16 +134,26 @@ end
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 def merge_sort(array)
-    return array if array.length <=1
-    mid_idx = array.length/2
-    merge(merge_sort(array[0..mid_idx]),  merge_sort(array[mid_idx+1 ..-1]))
-
+  return array if array.length <= 1
+  mid_idx = array.length / 2
+  beginning = merge_sort(array[0..mid_idx])
+  ending = merge_sort(array[(mid_idx + 1)..-1])
+  merge(beginning, ending)
 end
+
 def merge(array_1, array_2)
-    
-    merged = []
-    if array1[0]
+  merged = []
+  target_length = array_1.length + array_2.length
+  while merged.length < target_length && array_1.length > 0 && array_2.length > 0
+    if array_1[0] > array_2[0]
+      merged << array_2.shift
+    else
+      merged << array_1.shift
+    end
+  end
 
+  merged + array_1 + array_2
 end
 
-test_arr = [7,14,3,90]
+p merge_sort([7, 14, 3, 90])
+# p merge([2, 4, 6, 8], [1, 3, 5, 7])
